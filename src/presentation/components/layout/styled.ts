@@ -1,3 +1,4 @@
+import { StatusBar } from 'react-native'
 import { styled } from 'styled-components/native'
 
 export const Container = styled.View`
@@ -5,6 +6,7 @@ export const Container = styled.View`
 	flex: 1;
 	flex-direction: column;
 	background-color: #363838;
+	padding-top: ${StatusBar.currentHeight || 0}px;
 `
 export const Body = styled.View`
 	display: flex;
@@ -12,8 +14,9 @@ export const Body = styled.View`
 	flex-direction: column;
 	gap: 16px;
 	background-color: #ffffff;
-	padding: 24px;
+	padding: 16px;
 	border-radius: 32px;
-	margin-left: 24px;
-	margin-right: 24px;
+	margin-top: -56px;
+	margin-left: 8px;
+	margin-right: 8px;
 `
