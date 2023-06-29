@@ -6,7 +6,6 @@ export const Container = styled.View`
 	flex: 1;
 	flex-direction: column;
 	background-color: #363838;
-	padding-top: ${StatusBar.currentHeight || 0}px;
 `
 export const Body = styled.View`
 	display: flex;
