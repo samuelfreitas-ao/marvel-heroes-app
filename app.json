@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "marvel-heroes-app",
+		"name": "Personagens Marvel",
     "slug": "marvel-heroes-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+			},
+			"package": "ao.freitas.marvel_heroes_app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+		},
+		"extra": {
+			"eas": {
+				"projectId": "3bcb2935-542a-490a-a539-3f1ffec41583"
+			}
+		},
+		"owner": "samuelfreitas"
   }
 }
