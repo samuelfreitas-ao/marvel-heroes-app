@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Container } from './styled'
-import { Spinner, Text } from '..'
+import { Spinner } from '../spinner'
+import { Text } from '../text'
 
 type LoadingProps = {
 	data?: ReactNode

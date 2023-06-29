@@ -1,8 +1,9 @@
 import { ReactNode, useCallback } from 'react'
 
 import { Button, Container } from './styled'
-import { IconBack, Text } from '..'
 import { View } from 'react-native'
+import { IconBack } from '../icons'
+import { Text } from '../text'
 
 type TitleProps = { children: ReactNode; backTo?: string }
 

@@ -1,6 +1,6 @@
 import { FlatList } from 'react-native'
-import { CharacterItem } from '..'
 import { Character } from '../../../domain/models'
+import { CharacterItem } from '../character-item'
 
 type CharacterListProps = {
 	characters: Character[]

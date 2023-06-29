@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
-import { IconSearch } from '..'
 import { Container, Input, Button, FormContent } from './styled'
+import { IconSearch } from '../icons'
 
 export const SearchBar = () => {
 	const handleInputChange = useCallback((text: string) => {

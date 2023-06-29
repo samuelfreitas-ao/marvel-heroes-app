@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react'
 import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
 import { Character } from '../../../domain/models'
 import { Spinner } from '../spinner'
-import { Text } from '..'
+import { Text } from '../text'
 
 type CharacterItemProps = {
 	character: Character
