@@ -1,14 +1,11 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback } from 'react'
 
 import { IconSearch } from '..'
 import { Container, Input, Button, FormContent } from './styled'
 
 export const SearchBar = () => {
-	const [query, setQuery] = useState('')
-	const timeoutId = useRef<number>()
-
 	const handleInputChange = useCallback((text: string) => {
-		setQuery(text)
+		console.log('Text', text)
 	}, [])
 
 	return (
