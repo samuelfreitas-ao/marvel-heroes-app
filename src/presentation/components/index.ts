@@ -1,2 +1,6 @@
+export * from './header'
+export * from './icons'
 export * from './layout'
+export * from './search-bar'
 export * from './text'
+export * from './title'
