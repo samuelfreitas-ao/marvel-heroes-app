@@ -2,6 +2,7 @@ import { memo, useCallback, useState } from 'react'
 import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
 import { Character } from '../../../domain/models'
 import { Spinner } from '../spinner'
+import { Text } from '..'
 
 type CharacterItemProps = {
 	character: Character
@@ -21,14 +22,8 @@ export const CharacterItem = memo(({ character }: CharacterItemProps) => {
 		setLoadingImg(false)
 	}, [])
 
-	const handleOpenDetail = useCallback(() => {
-		console.log('Navigate')
-	}, [character.id])
-
 	return (
-		<Container
-		// onClick={handleOpenDetail}
-		>
+		<Container>
 			<ImageContainer>
 				{loadingImg && <Spinner size={32} />}
 				<ItemImage
@@ -37,7 +32,9 @@ export const CharacterItem = memo(({ character }: CharacterItemProps) => {
 					onLoad={handleImageLoad}
 				/>
 			</ImageContainer>
-			<ItemTitle>{character.name}</ItemTitle>
+			<ItemTitle>
+				<Text text={character.name} color="white" style={{ fontSize: 24 }} />
+			</ItemTitle>
 		</Container>
 	)
 })
