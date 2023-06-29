@@ -1,6 +1,6 @@
+import { FlatList } from 'react-native'
 import { CharacterItem } from '..'
 import { Character } from '../../../domain/models'
-import { List } from './styled'
 
 type CharacterListProps = {
 	characters: Character[]
@@ -8,10 +8,10 @@ type CharacterListProps = {
 
 export function CharacterList({ characters }: CharacterListProps) {
 	return (
-		<List>
-			{characters.map((character) => (
-				<CharacterItem key={character.id.toString()} character={character} />
-			))}
-		</List>
+		<FlatList
+			data={characters}
+			renderItem={({ item }) => <CharacterItem character={item} />}
+			keyExtractor={(character: Character) => character.id.toString()}
+		/>
 	)
 }
