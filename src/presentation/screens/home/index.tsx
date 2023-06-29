@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
-import { LoadCharacters } from '../../../domain/usecases'
+import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
 import {
 	CharacterList,
 	Header,
 	Layout,
 	LayoutBody,
 	Loading,
+	Pagination,
 	Text,
 	Title
 } from '../../components'
@@ -16,18 +17,25 @@ type HomeProps = {
 	loadCharacters: LoadCharacters
 }
 export function Home({ loadCharacters }: HomeProps) {
-	const [Characters, setCharacters] = useState<Character[]>([])
-	const [isLoading, setIsLoading] = useState<boolean>(true)
+	const [characters, setCharacters] = useState<Character[]>([])
+	const [metaData, setMetaData] = useState<LoadCharactersMetadata>(
+		{} as LoadCharactersMetadata
+	)
+	const [isLoading, setIsLoading] = useState(true)
+	const [isReloading, setIsReloading] = useState(false)
+	const [selectedPage, setSelectedPage] = useState(0)
 
 	const fetchCharacters = useCallback(
 		async (offset: number) => {
 			try {
-				const { data } = await loadCharacters.loadAll({ params: { offset } })
+				const { data, metaData } = await loadCharacters.loadAll({ params: { offset } })
 				setCharacters(data)
+				setMetaData(metaData)
 			} catch (error: any) {
 				console.log('Error', error.message)
 			} finally {
 				setIsLoading(false)
+				setIsReloading(false)
 			}
 		},
 		[loadCharacters]
@@ -35,8 +43,13 @@ export function Home({ loadCharacters }: HomeProps) {
 
 	useEffect(() => {
 		fetchCharacters(0)
-		console.log('Loading..')
 	}, [fetchCharacters])
+
+	const onChangePage = (page: number) => {
+		setSelectedPage(page)
+		setIsReloading(true)
+		fetchCharacters(page * metaData.limit)
+	}
 
 	return (
 		<Layout>
@@ -50,8 +63,14 @@ export function Home({ loadCharacters }: HomeProps) {
 				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : (
-					<CharacterList characters={Characters} />
+					<CharacterList characters={characters} />
 				)}
+				<Pagination
+					metaData={metaData}
+					onChangePage={onChangePage}
+					page={selectedPage}
+					isLoading={isReloading}
+				/>
 			</LayoutBody>
 		</Layout>
 	)
