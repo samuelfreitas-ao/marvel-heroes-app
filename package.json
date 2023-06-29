@@ -6,31 +6,32 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-		"web": "expo start --web",
-		"lint": "eslint . --ext .ts,.tsx  --fix"
+    "web": "expo start --web",
+    "lint": "eslint . --ext .ts,.tsx  --fix"
   },
   "dependencies": {
     "expo": "~48.0.18",
     "expo-status-bar": "~1.4.4",
     "react": "18.2.0",
-		"react-native": "0.71.8"
+    "react-native": "0.71.8",
+    "styled-components": "^6.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.0.14",
-		"@typescript-eslint/eslint-plugin": "^5.60.1",
-		"@typescript-eslint/parser": "^5.60.1",
-		"eslint": "^8.43.0",
-		"eslint-config-prettier": "^8.8.0",
-		"eslint-config-standard-with-typescript": "^35.0.0",
-		"eslint-plugin-import": "^2.27.5",
-		"eslint-plugin-n": "^16.0.1",
-		"eslint-plugin-prettier": "^4.2.1",
-		"eslint-plugin-promise": "^6.1.1",
-		"eslint-plugin-react": "^7.32.2",
-		"eslint-plugin-react-hooks": "^4.6.0",
-		"eslint-plugin-react-native": "^4.0.0",
-		"prettier": "^2.8.8",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^35.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "^2.8.8",
     "typescript": "^4.9.4"
   },
   "private": true
