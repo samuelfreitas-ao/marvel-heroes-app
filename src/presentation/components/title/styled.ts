@@ -7,10 +7,15 @@ export const Container = styled.View`
 	justify-content: center;
 	background-color: #363838;
 	padding: 8px;
-	font-weight: 500;
 `
 export const Button = styled.TouchableOpacity`
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+	align-items: center;
+	justify-content: center;
+	padding: 4px 8px;
+	margin-right: auto;
 	background-color: #444;
-	color: #ffffff;
 	border-radius: 8px;
 `
