@@ -8,6 +8,9 @@ export declare global {
 			search: {
 				query: string
 			}
+			detail: {
+				characterId: number
+			}
 		}
 	}
 }
