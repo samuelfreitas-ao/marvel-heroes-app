@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import Toast from 'react-native-toast-message'
 
 import { Container, Input, Button, FormContent, SearchResultContent } from './styled'
-import { IconSearch, IconSend } from '../icons'
+import { IconSearch } from '../icons'
 import { Character } from '../../../domain/models'
 import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
 import { SearchListResult } from '../search-list-result'
@@ -96,7 +96,6 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	return (
 		<Container>
 			<FormContent>
-				<IconSearch color="#999" size={24} />
 				<Input
 					placeholder="Pesquisar personagens da Marvel..."
 					onChangeText={handleInputChange}
@@ -105,7 +104,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 					onBlur={toggleShowSearchResult}
 				/>
 				<Button onPress={handleSubmit}>
-					<IconSend color="#000" size={24} />
+					<IconSearch color="#000" size={24} />
 				</Button>
 				{showSearchResult && (
 					<SearchResultContent>
