@@ -1,16 +1,28 @@
-import { Dimensions } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 import { styled } from 'styled-components/native'
 
 const { width } = Dimensions.get('screen')
 
-const itemHeight = width - 32
+const itemHeight = width - 48
 const itemWidth = itemHeight
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
 	position: relative;
 	display: flex;
 	margin-bottom: 16px;
 	height: ${itemHeight}px;
+	background-color: #fff;
+	${Platform.select({
+		ios: `
+      shadow-color: #000000;
+      shadow-offset: 0px 2px;
+      shadow-opacity: 0.3;
+      shadow-radius: 4px;
+    `,
+		android: `
+      elevation: 12;
+    `
+	})}
 `
 export const ImageContainer = styled.View`
 	justify-content: center;
