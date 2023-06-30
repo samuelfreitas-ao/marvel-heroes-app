@@ -1,5 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import { MakeHome, MakeSearch } from '../../main/factories/screens'
+import { MakeCharacterDetail, MakeHome, MakeSearch } from '../../main/factories/screens'
 
 const { Navigator, Screen } = createStackNavigator()
 
@@ -8,6 +8,7 @@ export function AppRoutes() {
 		<Navigator screenOptions={{ headerShown: false }}>
 			<Screen name="home" component={MakeHome} />
 			<Screen name="search" component={MakeSearch} />
+			<Screen name="detail" component={MakeCharacterDetail} />
 		</Navigator>
 	)
 }
