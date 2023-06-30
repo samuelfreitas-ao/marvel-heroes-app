@@ -1,16 +1,48 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Pressable, TextProps, TouchableOpacity, View } from 'react-native'
+import { Image, Linking, Pressable, View } from 'react-native'
 import { Animated, GestureResponderEvent, Modal } from 'react-native'
 import { Dimensions } from 'react-native'
-import { Text } from '../text'
 import { THEME } from '../../styles'
-import { IconSearch } from '../icons'
+import { IconFacebook, IconGithub, IconLinkedIn, IconSite, IconWhatsApp } from '../icons'
+import { MenuItem, MenuText } from './styled'
+import { getPersonalInfo } from '../../../utils/data'
+import { Text } from '../text'
+import Toast from 'react-native-toast-message'
 
 type MenuProps = {
 	open: boolean
 	onClose: () => void
 }
 
+const { name, site, github, facebook, linkedin, whatsAppLink } = getPersonalInfo()
+
+const data = [
+	{
+		link: whatsAppLink,
+		icon: IconWhatsApp,
+		text: 'WhatsApp'
+	},
+	{
+		link: linkedin,
+		icon: IconLinkedIn,
+		text: 'LinkedIn'
+	},
+	{
+		link: github,
+		icon: IconGithub,
+		text: 'Github'
+	},
+	{
+		link: facebook,
+		icon: IconFacebook,
+		text: 'Facebook'
+	},
+	{
+		link: site,
+		icon: IconSite,
+		text: 'Portfólio'
+	}
+]
 export function Menu({ open, onClose }: MenuProps) {
 	const modalRef = useRef(null)
 	const [show, setShow] = useState(false)
@@ -46,6 +78,19 @@ export function Menu({ open, onClose }: MenuProps) {
 		if (e.target == modalRef.current) onClose()
 	}, [])
 
+	const handleOpenLink = useCallback(async (link: string) => {
+		const supportedLink = await Linking.canOpenURL(link)
+		if (supportedLink) {
+			await Linking.openURL(link)
+		} else {
+			Toast.show({
+				type: 'error',
+				text1: 'Erro',
+				text2: `URL não suportado ${link}`
+			})
+		}
+	}, [])
+
 	if (!show) return <></>
 	return (
 		<Modal transparent={true} animationType="fade">
@@ -60,64 +105,31 @@ export function Menu({ open, onClose }: MenuProps) {
 				<Animated.View
 					style={[
 						{
-							position: 'relative',
 							backgroundColor: THEME.colors.gray[500],
-							paddingVertical: 20,
+							paddingVertical: 24,
+							paddingHorizontal: 8,
 							marginRight: 'auto',
 							flex: 1,
-							justifyContent: 'space-between'
+							gap: 8
 						},
 						{ transform: [{ translateX: headerAnimation }] }
 					]}
 				>
-					<View>
-						<MenuItems
-							text={'Samuel'}
-							icon={<IconSearch size={24} />}
-							// textProps={{
-							// 	style: {
-							// 		fontFamily: THEME.fonts.heading,
-							// 		fontSize: THEME.fontSizes.lg
-							// 	}
-							// }}
+					<View style={{ alignItems: 'center' }}>
+						<Image
+							source={{ uri: `${github}.png` }}
+							style={{ width: 100, height: 100, borderRadius: 100 }}
 						/>
-						<MenuItems text={'Samuel Freitas'} icon={<IconSearch size={18} />} />
 					</View>
-					<TouchableOpacity
-						style={{
-							// backgroundColor: THEME.colors.gray[200],
-							justifyContent: 'flex-start',
-							borderRadius: 0
-						}}
-						onPress={() => console.log('Saindo')}
-					>
-						<IconSearch size={24} />
-						<Text text="Terminar sessão" />
-					</TouchableOpacity>
+					<MenuText>{name}</MenuText>
+					{data.map(({ icon: Icon, link, text }) => (
+						<MenuItem key={link} onPress={() => handleOpenLink(link)}>
+							<Icon size={24} color={THEME.colors.gray[200]} />
+							<Text text={text} color={THEME.colors.gray[200]} style={{ fontSize: 20 }} />
+						</MenuItem>
+					))}
 				</Animated.View>
 			</Pressable>
 		</Modal>
-	)
-}
-
-type MenuItemsProps = {
-	text: string
-	icon: React.ReactNode
-	textProps?: TextProps
-}
-
-function MenuItems({ text, icon, textProps }: MenuItemsProps) {
-	return (
-		<View
-			style={{
-				flexDirection: 'row',
-				alignItems: 'center',
-				gap: 8,
-				padding: 8
-			}}
-		>
-			<View style={{ width: 24, alignItems: 'center' }}>{icon}</View>
-			<Text text={text} {...textProps} />
-		</View>
 	)
 }
