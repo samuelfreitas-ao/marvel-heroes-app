@@ -12,9 +12,9 @@ type TitleProps = {
 }
 
 export function Title({ children, backTo }: TitleProps) {
-	const { navigate } = useNavigation()
+	const { goBack } = useNavigation()
 	const handleBackHome = useCallback(() => {
-		navigate(backTo ?? 'home')
+		goBack()
 	}, [])
 
 	return (
@@ -23,7 +23,7 @@ export function Title({ children, backTo }: TitleProps) {
 			{backTo && (
 				<Button onPress={handleBackHome}>
 					<IconBack size={16} color="#fff" />
-					<Text text="Home" color="#fff" />
+					<Text text="Voltar" color="#fff" />
 				</Button>
 			)}
 		</>
