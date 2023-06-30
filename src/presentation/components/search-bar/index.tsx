@@ -81,11 +81,8 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 
 	const toggleShowSearchResult = useCallback(() => {
 		const show = !showSearchResult
-		console.log('show', show)
-
 		setMessage(show && query.trim().length < 2 ? 'Escreva algum nome' : '')
 		setTimeout(() => {
-			console.log('showSearchResult', showSearchResult)
 			setShowSearchResult(show)
 		}, 200)
 	}, [showSearchResult, query])
