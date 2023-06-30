@@ -18,7 +18,7 @@ export const Content = styled.View`
 	align-items: center;
 	gap: 8px;
 `
-export const IconContent = styled.TouchableOpacity`
+export const MenuButton = styled.TouchableOpacity`
 	display: flex;
 	flex-direction: row;
 	margin-left: auto;
