@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
+import Toast from 'react-native-toast-message'
+
 import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
 import {
 	CharacterList,
@@ -32,7 +34,11 @@ export function Home({ loadCharacters }: HomeProps) {
 				setCharacters(data)
 				setMetaData(metaData)
 			} catch (error: any) {
-				console.log('Error', error.message)
+				Toast.show({
+					type: 'error',
+					text1: 'Erro',
+					text2: error.message
+				})
 			} finally {
 				setIsLoading(false)
 				setIsReloading(false)
