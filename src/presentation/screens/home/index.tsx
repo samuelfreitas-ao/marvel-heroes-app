@@ -64,7 +64,7 @@ export function Home({ loadCharacters }: HomeProps) {
 			</Header>
 			<LayoutBody>
 				<Title>
-					<Text text={`Personagens`} color="white" />
+					<Text text={`Personagens da Marvel`} color="white" />
 				</Title>
 				{isLoading ? (
 					<Loading data="Carregando personagens..." />
