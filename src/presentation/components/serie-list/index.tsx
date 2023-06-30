@@ -10,7 +10,10 @@ export function SerieList({ series }: SerieProps) {
 	return (
 		<Container>
 			<Title>
-				<Text text="Participação em séries" />
+				<Text
+					text="Participação em séries"
+					style={{ fontWeight: 'bold', fontSize: 20 }}
+				/>
 				<Text text={`(${series.length})`} />
 			</Title>
 			<List>
