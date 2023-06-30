@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import Toast from 'react-native-toast-message'
 
 import { Container, Input, Button, FormContent, SearchResultContent } from './styled'
 import { IconSearch, IconSend } from '../icons'
@@ -18,7 +19,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 		{} as LoadCharactersMetadata
 	)
 	const [message, setMessage] = useState('')
-	const [showSearchResult] = useState(false)
+	const [showSearchResult, setShowSearchResult] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const timeoutId = useRef<any>()
 
@@ -30,15 +31,17 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				const { data, metaData } = await loadSearch.loadAll({
 					params: { nameStartsWith: search }
 				})
-				console.log('data', data)
-
 				setQueryResult(data)
 				setMetaData(metaData)
 				if (data.length < 1) {
 					setMessage('Nenhum resultado')
 				}
 			} catch (error: any) {
-				alert(error?.message)
+				Toast.show({
+					type: 'error',
+					text1: 'Erro',
+					text2: error.message
+				})
 			} finally {
 				setIsLoading(false)
 			}
@@ -65,17 +68,20 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 		(text: string) => {
 			const newSearchQuery = text
 			setQuery(newSearchQuery)
-			// handleSearch(newSearchQuery)
+			handleSearch(newSearchQuery)
 		},
 		[handleSearch]
 	)
 
 	const toggleShowSearchResult = useCallback(() => {
 		const show = !showSearchResult
+		console.log('show', show)
+
 		setMessage(show && query.trim().length < 2 ? 'Escreva algum nome' : '')
-		// setTimeout(() => {
-		// 	setShowSearchResult(show)
-		// }, 200)
+		setTimeout(() => {
+			console.log('showSearchResult', showSearchResult)
+			setShowSearchResult(show)
+		}, 200)
 	}, [showSearchResult, query])
 
 	const handleSubmit = useCallback(() => {

@@ -3,7 +3,7 @@ import { styled } from 'styled-components/native'
 
 const { width } = Dimensions.get('screen')
 
-const itemHeight = width - 48
+const itemHeight = width - 32
 const itemWidth = itemHeight
 
 export const Container = styled.TouchableOpacity`

@@ -7,6 +7,7 @@ export const Container = styled.View`
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(255, 255, 255, 0.5);
+	z-index: 2000;
 `
 export const FormContent = styled.View`
 	display: flex;
@@ -18,6 +19,7 @@ export const FormContent = styled.View`
 	padding-right: 0;
 	border-radius: 16px;
 	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 2000;
 `
 export const Input = styled.TextInput`
 	display: flex;
@@ -36,11 +38,11 @@ export const Button = styled.TouchableOpacity`
 `
 export const SearchResultContent = styled.View`
 	position: absolute;
-	top: 50px;
+	display: flex;
+	top: 40px;
 	left: 0;
-	width: calc(100% - 16px);
 	padding: 8px;
+	width: 100%;
 	background-color: rgba(255, 255, 255, 0.9);
-	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-	z-index: 2;
+	z-index: 2000;
 `
