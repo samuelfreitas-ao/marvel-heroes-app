@@ -3,12 +3,14 @@ import { ImageContainer, Container, ItemImage, ItemTitle } from './styled'
 import { Character } from '../../../domain/models'
 import { Spinner } from '../spinner'
 import { Text } from '../text'
+import { useNavigation } from '@react-navigation/native'
 
 type CharacterItemProps = {
 	character: Character
 }
 
 export const CharacterItem = memo(({ character }: CharacterItemProps) => {
+	const { navigate } = useNavigation()
 	const [loadingImg, setLoadingImg] = useState(true)
 
 	const { extension, path } = character.thumbnail
@@ -22,8 +24,12 @@ export const CharacterItem = memo(({ character }: CharacterItemProps) => {
 		setLoadingImg(false)
 	}, [])
 
+	const handleOpenDetail = useCallback(() => {
+		navigate('detail', { characterId: character.id })
+	}, [character.id, navigate])
+
 	return (
-		<Container>
+		<Container onPress={handleOpenDetail}>
 			<ImageContainer>
 				{loadingImg && <Spinner size={32} />}
 				<ItemImage
