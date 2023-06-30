@@ -7,7 +7,6 @@ export const Container = styled.View`
 	align-items: center;
 	justify-content: center;
 	background-color: rgba(255, 255, 255, 0.5);
-	z-index: 2000;
 `
 export const FormContent = styled.View`
 	display: flex;
@@ -19,7 +18,6 @@ export const FormContent = styled.View`
 	padding-right: 0;
 	border-radius: 16px;
 	background-color: rgba(0, 0, 0, 0.8);
-	z-index: 2000;
 `
 export const Input = styled.TextInput`
 	display: flex;
@@ -44,5 +42,4 @@ export const SearchResultContent = styled.View`
 	padding: 8px;
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0.9);
-	z-index: 2000;
 `
