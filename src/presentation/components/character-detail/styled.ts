@@ -1,5 +1,6 @@
 import { Dimensions, Platform } from 'react-native'
 import { styled } from 'styled-components/native'
+import { THEME } from '../../styles'
 
 const { width } = Dimensions.get('screen')
 const itemHeight = width - 48
@@ -15,11 +16,11 @@ export const Container = styled.View`
 export const ImageContainer = styled.View`
 	display: flex;
 	justify-content: center;
-	background: #ffffff;
+	background: ${THEME.colors.white};
 	border-radius: 32px;
 	${Platform.select({
 		ios: `
-      shadow-color: #000000;
+      shadow-color: ${THEME.colors.black};
       shadow-offset: 0px 2px;
       shadow-opacity: 0.3;
       shadow-radius: 4px;

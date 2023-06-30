@@ -1,5 +1,6 @@
 import { Dimensions, Platform } from 'react-native'
 import { styled } from 'styled-components/native'
+import { THEME } from '../../styles'
 
 const { width } = Dimensions.get('screen')
 
@@ -11,10 +12,10 @@ export const Container = styled.TouchableOpacity`
 	display: flex;
 	margin-bottom: 16px;
 	height: ${itemHeight}px;
-	background-color: #fff;
+	background-color: ${THEME.colors.white};
 	${Platform.select({
 		ios: `
-      shadow-color: #000000;
+      shadow-color: ${THEME.colors.black};
       shadow-offset: 0px 2px;
       shadow-opacity: 0.3;
       shadow-radius: 4px;

@@ -1,5 +1,6 @@
 import { Dimensions, StatusBar } from 'react-native'
 import { styled } from 'styled-components/native'
+import { THEME } from '../../styles'
 
 const { width: screenWidth } = Dimensions.get('screen')
 
@@ -22,7 +23,7 @@ export const MenuButton = styled.TouchableOpacity`
 	display: flex;
 	flex-direction: row;
 	margin-left: auto;
-	background: #5a7e76;
-	border: 1px solid #ccc;
+	background: ${THEME.colors.green[500]};
+	border: 1px solid ${THEME.colors.gray[400]};
 	border-radius: 4px;
 `

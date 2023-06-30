@@ -7,6 +7,7 @@ import { IconSearch } from '../icons'
 import { Character } from '../../../domain/models'
 import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
 import { SearchListResult } from '../search-list-result'
+import { THEME } from '../../styles'
 
 type SearchBarProps = {
 	loadSearch: LoadCharacters
@@ -99,12 +100,12 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				<Input
 					placeholder="Pesquisar personagens da Marvel..."
 					onChangeText={handleInputChange}
-					placeholderTextColor={'#999'}
+					placeholderTextColor={THEME.colors.gray[200]}
 					onFocus={toggleShowSearchResult}
 					onBlur={toggleShowSearchResult}
 				/>
 				<Button onPress={handleSubmit}>
-					<IconSearch color="#fff" size={24} />
+					<IconSearch color={THEME.colors.white} size={24} />
 				</Button>
 				{showSearchResult && (
 					<SearchResultContent>

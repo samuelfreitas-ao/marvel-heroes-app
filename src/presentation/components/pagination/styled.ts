@@ -1,4 +1,5 @@
 import { styled } from 'styled-components/native'
+import { THEME } from '../../styles'
 
 export const Container = styled.View`
 	margin: 8px;
@@ -19,11 +20,8 @@ export const Item = styled.View`
 	padding: 0;
 `
 export const Button = styled.TouchableOpacity`
-	/* background-color: ${(props) => (props.disabled ? '#eee' : 'white')}; */
-	/* border: ${(props) => (props.disabled ? 'none' : '1px solid #ddd')}; */
 	opacity: ${(props) => (props.disabled ? 0.4 : 1)};
-	/* border-bottom: ${(props) => (props.disabled ? '2px solid #ddd' : 'none')}; */
-	border: 1px solid #ccc;
+	border: 1px solid ${THEME.colors.gray[400]};
 	padding: 2px 8px;
 	border-radius: 4px;
 `
