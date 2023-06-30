@@ -2,11 +2,9 @@ import { styled } from 'styled-components/native'
 
 export const Container = styled.View`
 	display: flex;
-	width: 100%;
-	padding: 16px;
+	flex: 1;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(255, 255, 255, 0.5);
 `
 export const FormContent = styled.View`
 	display: flex;
@@ -17,7 +15,8 @@ export const FormContent = styled.View`
 	padding: 0 16px;
 	padding-right: 0;
 	border-radius: 16px;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.7);
+	border: 1px solid #5a7e76;
 `
 export const Input = styled.TextInput`
 	display: flex;
@@ -27,12 +26,12 @@ export const Input = styled.TextInput`
 `
 export const Button = styled.TouchableOpacity`
 	border: none;
-	background-color: #999;
+	background-color: #5a7e76;
 	border-radius: 0 16px 16px 0;
 	font-size: 24px;
 	display: flex;
 	padding: 8px;
-	border: 1px solid #666;
+	/* border: 1px solid #666; */
 `
 export const SearchResultContent = styled.View`
 	position: absolute;

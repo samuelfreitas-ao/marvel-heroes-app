@@ -104,7 +104,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 					onBlur={toggleShowSearchResult}
 				/>
 				<Button onPress={handleSubmit}>
-					<IconSearch color="#000" size={24} />
+					<IconSearch color="#fff" size={24} />
 				</Button>
 				{showSearchResult && (
 					<SearchResultContent>

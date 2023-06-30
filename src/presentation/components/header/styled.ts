@@ -11,5 +11,18 @@ export const Container = styled.ImageBackground`
 	padding: 24px 8px;
 	padding-top: ${StatusBar.currentHeight || 0}px;
 	/* padding-bottom: 64px; */
-	/* z-index: 1; */
+`
+export const Content = styled.View`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+`
+export const IconContent = styled.TouchableOpacity`
+	display: flex;
+	flex-direction: row;
+	margin-left: auto;
+	background: #5a7e76;
+	border: 1px solid #ccc;
+	border-radius: 4px;
 `
