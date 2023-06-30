@@ -54,7 +54,7 @@ export function Home({ loadCharacters }: HomeProps) {
 	return (
 		<Layout>
 			<Header>
-				<SearchBar />
+				<SearchBar loadSearch={loadCharacters} />
 			</Header>
 			<LayoutBody>
 				<Title>
