@@ -14,7 +14,8 @@ export const FormContent = styled.View`
 	position: relative;
 	align-items: center;
 	width: 100%;
-	padding: 8px 16px;
+	padding: 0 16px;
+	padding-right: 0;
 	border-radius: 16px;
 	background-color: rgba(0, 0, 0, 0.8);
 `
@@ -26,13 +27,12 @@ export const Input = styled.TextInput`
 `
 export const Button = styled.TouchableOpacity`
 	border: none;
-	background-color: transparent;
-	border-radius: 4px;
-	color: #999999;
+	background-color: #999;
+	border-radius: 0 16px 16px 0;
 	font-size: 24px;
 	display: flex;
-	padding: 4px;
-	cursor: pointer;
+	padding: 8px;
+	border: 1px solid #666;
 `
 export const SearchResultContent = styled.View`
 	position: absolute;
