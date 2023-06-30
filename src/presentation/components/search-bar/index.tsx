@@ -23,10 +23,15 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const timeoutId = useRef<any>()
 
+	const resetData = () => {
+		setQueryResult([])
+		setMetaData({} as any)
+	}
+
 	const fetchData = useCallback(
 		async (search: string) => {
 			setIsLoading(true)
-			// resetData()
+			resetData()
 			try {
 				const { data, metaData } = await loadSearch.loadAll({
 					params: { nameStartsWith: search }
@@ -58,7 +63,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 					setMessage('')
 					fetchData(newSearchQuery)
 				} else {
-					// resetData()
+					resetData()
 				}
 			}, 900)
 		},
