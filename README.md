@@ -38,7 +38,7 @@ git clone https://github.com/samuelfreitas-ao/marvel-heroes-app.git
 npm install
 ```
 
-- Faça uma cópia do arquivo `.env.example` para `.env` na raiz do projecto e preencha corretamente a variável `PUBLIC_KEY` e `PRIVATE_KEY` com as chaves da api da Marvel ([https://developer.marvel.com](https://developer.marvel.com)).
+- Faça uma cópia do arquivo `.env.example` para `.env` na raiz do projecto e preencha corretamente a variável `MARVEL_PUBLIC_KEY` e `MARVEL_PRIVATE_KEY` com as chaves da api da Marvel ([https://developer.marvel.com](https://developer.marvel.com)).
 
 - Para iniciar projecto execute o comando:
 
