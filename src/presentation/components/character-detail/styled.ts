@@ -34,13 +34,12 @@ export const Image = styled.Image<{ unavailable?: string }>`
 	width: ${itemWidth}px;
 	height: ${itemHeight}px;
 	border-radius: 32px;
-	/* border: 1px solid #444; */
 `
 export const BioContainer = styled.View`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 16px;
-	justify-content: center;
 `
 export const BioBody = styled.View`
 	display: flex;
