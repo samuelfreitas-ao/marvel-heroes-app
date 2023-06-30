@@ -1,27 +1,40 @@
+import { Dimensions, Platform } from 'react-native'
 import { styled } from 'styled-components/native'
 
+const { width } = Dimensions.get('screen')
+const itemHeight = width - 48
+const itemWidth = itemHeight
+
 export const Container = styled.View`
-	position: relative;
-	display: grid;
-	grid-template-columns: 6fr 4fr;
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	grid-gap: 16px;
-	flex-direction: column;
-	min-height: 100px;
+	gap: 16px;
 `
 export const ImageContainer = styled.View`
 	display: flex;
-	flex: 1;
 	justify-content: center;
-	position: relative;
-	min-height: 100px;
+	background: #ffffff;
+	border-radius: 32px;
+	${Platform.select({
+		ios: `
+      shadow-color: #000000;
+      shadow-offset: 0px 2px;
+      shadow-opacity: 0.3;
+      shadow-radius: 4px;
+    `,
+		android: `
+      elevation: 8;
+    `
+	})}
 `
 export const Image = styled.Image<{ unavailable?: string }>`
 	opacity: ${(props) => (props?.unavailable ? 0.6 : 0.8)};
-	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-	width: 80%;
+	width: ${itemWidth}px;
+	height: ${itemHeight}px;
 	border-radius: 32px;
+	/* border: 1px solid #444; */
 `
 export const BioContainer = styled.View`
 	display: flex;

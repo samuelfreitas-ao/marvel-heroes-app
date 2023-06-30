@@ -4,6 +4,7 @@ import { Container, ImageContainer, Image, BioBody, BioContainer } from './style
 import { Text } from '../text'
 import { Spinner } from '../spinner'
 import { SerieList } from '../serie-list'
+import { ScrollView } from 'react-native'
 
 type CharacterCardDetailProps = {
 	character: Character
@@ -23,22 +24,28 @@ export function CharacterCardDetail({ character }: CharacterCardDetailProps) {
 	}, [])
 
 	return (
-		<Container>
-			<ImageContainer>
-				{loadingImg && <Spinner size={32} />}
-				<Image
-					source={{ uri: imgUrl }}
-					unavailable={imgUnavailable}
-					onLoad={handleImageLoad}
-				/>
-			</ImageContainer>
-			<BioContainer>
-				<Text style={{ fontSize: 24 }}>{character.name}</Text>
-				<BioBody>
-					{character.description || <Text text="Nenhuma descrição" />}
-					{character.series.length > 0 && <SerieList series={character.series} />}
-				</BioBody>
-			</BioContainer>
-		</Container>
+		<ScrollView>
+			<Container>
+				<ImageContainer>
+					{loadingImg && <Spinner size={32} />}
+					<Image
+						source={{ uri: imgUrl }}
+						unavailable={imgUnavailable}
+						onLoad={handleImageLoad}
+					/>
+				</ImageContainer>
+				<BioContainer>
+					<Text style={{ fontSize: 24, fontWeight: 'bold' }}>{character.name}</Text>
+					<BioBody>
+						{character.description ? (
+							<Text text={character.description} />
+						) : (
+							<Text text="Nenhuma descrição" />
+						)}
+						{character.series.length > 0 && <SerieList series={character.series} />}
+					</BioBody>
+				</BioContainer>
+			</Container>
+		</ScrollView>
 	)
 }
