@@ -18,7 +18,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 		{} as LoadCharactersMetadata
 	)
 	const [message, setMessage] = useState('')
-	const [showSearchResult, setShowSearchResult] = useState(false)
+	const [showSearchResult] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const timeoutId = useRef<any>()
 

@@ -1,7 +1,6 @@
 import { ReactNode, useCallback } from 'react'
 
 import { Button, Container } from './styled'
-import { View } from 'react-native'
 import { IconBack } from '../icons'
 import { Text } from '../text'
 import { IScreen } from '../../../@types'
