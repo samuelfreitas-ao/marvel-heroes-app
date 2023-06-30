@@ -48,9 +48,7 @@ export function CharacterDetail({ loadCharacters }: CharacterDetailProps) {
 		<Layout>
 			<Header />
 			<LayoutBody>
-				<Title backTo="home">
-					<Text text={`Personagem: ${character?.name ?? ''}`} color="#fff" />
-				</Title>
+				<Title backTo="home" title={`Personagem: ${character?.name ?? ''}`} />
 				{isLoading ? (
 					<Loading data="Carregando personagem..." />
 				) : !character ? (

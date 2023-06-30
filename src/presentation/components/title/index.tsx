@@ -1,4 +1,4 @@
-import { ReactNode, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { Button, Container } from './styled'
 import { IconBack } from '../icons'
@@ -7,11 +7,11 @@ import { IScreen } from '../../../@types'
 import { useNavigation } from '@react-navigation/native'
 
 type TitleProps = {
-	children: ReactNode
+	title: string
 	backTo?: keyof IScreen
 }
 
-export function Title({ children, backTo }: TitleProps) {
+export function Title({ title, backTo }: TitleProps) {
 	const { goBack } = useNavigation()
 	const handleBackHome = useCallback(() => {
 		goBack()
@@ -19,7 +19,9 @@ export function Title({ children, backTo }: TitleProps) {
 
 	return (
 		<>
-			<Container>{children}</Container>
+			<Container>
+				<Text text={title} color="#fff" style={{ fontSize: 20 }} />
+			</Container>
 			{backTo && (
 				<Button onPress={handleBackHome}>
 					<IconBack size={16} color="#fff" />

@@ -9,7 +9,6 @@ import {
 	LayoutBody,
 	Loading,
 	Pagination,
-	Text,
 	Title
 } from '../../components'
 import { SearchBar } from '../../components'
@@ -63,9 +62,7 @@ export function Home({ loadCharacters }: HomeProps) {
 				<SearchBar loadSearch={loadCharacters} />
 			</Header>
 			<LayoutBody>
-				<Title>
-					<Text text={`Personagens da Marvel`} color="white" />
-				</Title>
+				<Title title={`Personagens da Marvel`} />
 				{isLoading ? (
 					<Loading data="Carregando personagens..." />
 				) : (
