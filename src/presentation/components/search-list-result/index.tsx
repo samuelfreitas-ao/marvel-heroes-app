@@ -20,10 +20,12 @@ export function SearchListResult({
 }: SearchListResultProps) {
 	return (
 		<Container>
-			<Title>
-				<Text text={message} />
-				{isLoading && <Spinner />}
-			</Title>
+			{(message || isLoading) && (
+				<Title>
+					<Text text={message} />
+					{isLoading && <Spinner />}
+				</Title>
+			)}
 			<List>
 				{characters.map((character) => (
 					<SearchItemResult key={`search-item-${character.id}`} character={character} />
