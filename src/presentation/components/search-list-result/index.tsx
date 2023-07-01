@@ -31,7 +31,7 @@ export function SearchListResult({
 					<SearchItemResult key={`search-item-${character.id}`} character={character} />
 				))}
 			</List>
-			{metadata?.count && (
+			{metadata?.count > 0 && (
 				<CountResult>
 					<Text text={metadata.count} />
 					<Text text="-" />
