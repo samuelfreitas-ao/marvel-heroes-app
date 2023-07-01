@@ -40,7 +40,7 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 				setQueryResult(data)
 				setMetaData(metaData)
 				if (data.length < 1) {
-					setMessage('Nenhum resultado')
+					setMessage(`Nenhum resultado para: ${search}`)
 				}
 			} catch (error: any) {
 				Toast.show({
