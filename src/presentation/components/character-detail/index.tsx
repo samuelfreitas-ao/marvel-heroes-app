@@ -4,7 +4,10 @@ import { Container, ImageContainer, Image, BioBody, BioContainer } from './style
 import { Text } from '../text'
 import { Spinner } from '../spinner'
 import { SerieList } from '../serie-list'
-import { ScrollView } from 'react-native'
+import { Animated, Dimensions, ScrollView } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native'
+
+const { width: screenWidth, height: screenHeight } = Dimensions.get('window')
 
 type CharacterCardDetailProps = {
 	character: Character
@@ -12,6 +15,8 @@ type CharacterCardDetailProps = {
 
 export function CharacterCardDetail({ character }: CharacterCardDetailProps) {
 	const [loadingImg, setLoadingImg] = useState(true)
+	const [imageAnimation] = useState(new Animated.Value(-screenWidth))
+	const [descriptionAnimation] = useState(new Animated.Value(screenHeight))
 
 	const { extension, path } = character.thumbnail
 	const imgUrl = `${path}.${extension}`
@@ -19,6 +24,31 @@ export function CharacterCardDetail({ character }: CharacterCardDetailProps) {
 	if (imgUrl.includes('image_not_available')) {
 		imgUnavailable = 'true'
 	}
+
+	const handleAnimation = useCallback(() => {
+		Animated.parallel([
+			Animated.spring(imageAnimation, {
+				useNativeDriver: false,
+				toValue: 0,
+				speed: 1,
+				bounciness: 100
+			}),
+			Animated.spring(descriptionAnimation, {
+				useNativeDriver: false,
+				toValue: 0,
+				speed: 1,
+				bounciness: 100
+			})
+		]).start()
+
+		return () => {
+			imageAnimation.setValue(-screenWidth)
+			descriptionAnimation.setValue(screenHeight)
+		}
+	}, [])
+
+	useFocusEffect(handleAnimation)
+
 	const handleImageLoad = useCallback(() => {
 		setLoadingImg(false)
 	}, [])
@@ -26,25 +56,29 @@ export function CharacterCardDetail({ character }: CharacterCardDetailProps) {
 	return (
 		<ScrollView>
 			<Container>
-				<ImageContainer>
-					{loadingImg && <Spinner size={32} />}
-					<Image
-						source={{ uri: imgUrl }}
-						unavailable={imgUnavailable}
-						onLoad={handleImageLoad}
-					/>
-				</ImageContainer>
-				<BioContainer>
-					<Text style={{ fontSize: 24, fontWeight: 'bold' }}>{character.name}</Text>
-					<BioBody>
-						{character.description ? (
-							<Text text={character.description} />
-						) : (
-							<Text text="Nenhuma descrição" />
-						)}
-						{character.series.length > 0 && <SerieList series={character.series} />}
-					</BioBody>
-				</BioContainer>
+				<Animated.View style={{ transform: [{ translateX: imageAnimation }] }}>
+					<ImageContainer>
+						{loadingImg && <Spinner size={32} />}
+						<Image
+							source={{ uri: imgUrl }}
+							unavailable={imgUnavailable}
+							onLoad={handleImageLoad}
+						/>
+					</ImageContainer>
+				</Animated.View>
+				<Animated.View style={{ transform: [{ translateY: descriptionAnimation }] }}>
+					<BioContainer>
+						<Text style={{ fontSize: 24, fontWeight: 'bold' }}>{character.name}</Text>
+						<BioBody>
+							{character.description ? (
+								<Text text={character.description} />
+							) : (
+								<Text text="Nenhuma descrição" />
+							)}
+							{character.series.length > 0 && <SerieList series={character.series} />}
+						</BioBody>
+					</BioContainer>
+				</Animated.View>
 			</Container>
 		</ScrollView>
 	)
