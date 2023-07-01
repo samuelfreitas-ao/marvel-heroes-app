@@ -88,6 +88,13 @@ export const SearchBar = ({ loadSearch }: SearchBarProps) => {
 	}, [showSearchResult, query])
 
 	const handleSubmit = useCallback(() => {
+		if (query.trim().length < 1) {
+			return Toast.show({
+				type: 'error',
+				text1: 'Erro',
+				text2: 'Digite um termo de pesquisa'
+			})
+		}
 		navigator.navigate('search', { query })
 	}, [navigator, query])
 
