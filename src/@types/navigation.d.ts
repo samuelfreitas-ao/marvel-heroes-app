@@ -1,3 +1,4 @@
+import { Character } from '../domain/models'
 import { IScreen } from './screen'
 
 export declare global {
@@ -9,7 +10,7 @@ export declare global {
 				query: string
 			}
 			detail: {
-				characterId: number
+				character: Character
 			}
 		}
 	}

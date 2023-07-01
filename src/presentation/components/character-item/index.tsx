@@ -25,7 +25,7 @@ export const CharacterItem = memo(({ character }: CharacterItemProps) => {
 	}, [])
 
 	const handleOpenDetail = useCallback(() => {
-		navigate('detail', { characterId: character.id })
+		navigate('detail', { character })
 	}, [character.id, navigate])
 
 	return (
