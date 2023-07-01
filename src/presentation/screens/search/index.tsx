@@ -10,6 +10,7 @@ import {
 	LayoutBody,
 	Loading,
 	Pagination,
+	Text,
 	Title
 } from '../../components'
 import { SearchBar } from '../../components'
@@ -72,6 +73,8 @@ export function Search({ loadCharacters }: SearchProps) {
 				<Title title={`Pesquisa: ${query}`} backTo="home" />
 				{isLoading ? (
 					<Loading data="Pesquisando personagens..." />
+				) : characters.length < 1 ? (
+					<Text text="Nenhum resultado da pesquisa" />
 				) : (
 					<CharacterList characters={characters} />
 				)}
