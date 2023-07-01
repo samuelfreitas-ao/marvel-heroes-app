@@ -12,7 +12,7 @@ type SearchItemResultProps = {
 export const SearchItemResult = memo(({ character }: SearchItemResultProps) => {
 	const { navigate } = useNavigation()
 	const handleSelect = useCallback(() => {
-		navigate('detail', { characterId: character.id })
+		navigate('detail', { character })
 	}, [character])
 
 	return (
