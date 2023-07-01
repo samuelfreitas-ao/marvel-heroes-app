@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import Toast from 'react-native-toast-message'
 
 import { LoadCharacters, LoadCharactersMetadata } from '../../../domain/usecases'
@@ -13,6 +13,7 @@ import {
 } from '../../components'
 import { SearchBar } from '../../components'
 import { Character } from '../../../domain/models'
+import { useFocusEffect } from '@react-navigation/native'
 
 type HomeProps = {
 	loadCharacters: LoadCharacters
@@ -46,9 +47,12 @@ export function Home({ loadCharacters }: HomeProps) {
 		[loadCharacters]
 	)
 
-	useEffect(() => {
-		fetchCharacters(0)
-	}, [fetchCharacters])
+	useFocusEffect(() => {
+		if (characters.length < 1) {
+			setIsLoading(true)
+			fetchCharacters(0)
+		}
+	})
 
 	const onChangePage = (page: number) => {
 		setSelectedPage(page)
