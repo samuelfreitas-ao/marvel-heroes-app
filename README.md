@@ -47,4 +47,7 @@ npm run start
 ```
 
 - Pressione a letra `a` para abrir o emulador Android ou faça o scan com o [expo go](https://expo.dev/client) instalado no seu telefone.
+
+- Assista um vídeo de apresentação da aplicação [AQUI](https://www.youtube.com/watch?v=BuReQqqJrAU&list=PLJY7IUcMI3fyDyBQ5HVwcRYM88uMeIO0W)
+
 - Este projecto também tem uma versão web. [Acede a versão web AQUI](https://github.com/samuelfreitas-ao/marvel-heroes-web).
